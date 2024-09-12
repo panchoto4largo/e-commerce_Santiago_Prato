@@ -1,7 +1,21 @@
-const h5 = document.querySelector('h5');
-const p = document.querySelector('p');
-const img = document.querySelector('img');
+const h1 = document.querySelector('h1');
+const section = document.querySelector('section');
+h1.innerText = 'Productos';
 
-h5.innerText = 'Creatina';
-p.innerText = 'Some quick example text to build on the card title and make up the bulk of the cards content.';
-img.setAttribute('src', 'https://static.fundacion-affinity.org/cdn/farfuture/PVbbIC-0M9y4fPbbCsdvAD8bcjjtbFc0NSP3lRwlWcE/mtime:1643275542/sites/default/files/los-10-sonidos-principales-del-perro.jpg');
+let arr = [];
+
+for(let i = 1; i < 10; i++){
+    a = `
+        <div class="card m-3">
+                    <img src="https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/${i}.jpg" class="card-img-top"  alt="Car ${i}">
+                    <div class="card-body">
+                        <h5 class="card-title">Car ${i}</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipiscing elit donec, eleifend aenean purus dui ornare blandit risus facilisis interdum, cum nostra vulputate sem venenatis felis facilisi.</p>
+                        <p class="card-price">$2.100</p>
+                        <button type="button" class="btn btn-outline-dark">Buy item</button>
+                    </div>
+                </div>`
+    arr.push(a);
+}
+
+section.innerHTML = arr.join().replaceAll(",", "");
