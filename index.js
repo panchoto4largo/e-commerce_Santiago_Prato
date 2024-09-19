@@ -13,7 +13,7 @@ function cards(arr){
                             <h5 class="card-title">Car ${i}</h5>
                             <p class="card-text">Lorem ipsum dolor sit amet consectetur adipiscing elit donec, eleifend aenean purus dui ornare blandit risus facilisis interdum, cum nostra vulputate sem venenatis felis facilisi.</p>
                             <p class="card-price">$2.100</p>
-                            <button type="button" class="btn btn-outline-dark">Ver más</button>
+                            <a class="btn btn-primary" href="product/producto.html" role="button">Ver más</a>
                         </div>
                     </div>`
         arr.push(a);
