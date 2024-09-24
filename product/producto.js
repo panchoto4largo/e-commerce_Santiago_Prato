@@ -12,7 +12,7 @@ class Product {
 
 const objeto = new Product("Auto", "Buenisimo", 10000, 1, "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/1.jpg");
 
-const a = `
+const car = `
             <div class="card m-3">
                         <img src="${objeto.imagen}" class="card-img-top"  alt="Car 1">
                         <div class="card-body">
@@ -23,4 +23,4 @@ const a = `
                         </div>
                     </div>`;
 
-main.innerHTML = a
+main.innerHTML = car;
