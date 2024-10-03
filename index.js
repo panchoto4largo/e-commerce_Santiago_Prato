@@ -2,23 +2,16 @@ const h1 = document.querySelector('h1');
 const section = document.querySelector('section');
 h1.innerText = 'Productos';
 
-let arr = [];
+const cards = autos.map((auto) =>
+    `<div class="card"> 
+        <img src="${auto.url}" class="card-img-top" alt="Nike Air Zoom Pegasus 39 Shield">
+        <div class="card-body">
+            <h5 class="card-title">Car ${auto.model}</h5>
+            <p class="card-text">${auto.description}</p>
+            <p class="card-price">${auto.price}</p>
+            <button type="button" class="btn btn-outline-dark custom-btn-white"><a class="button-link" href="product/producto.html?prod=${auto.id}">See more</a></button>
+            <p class="card-text"><small class="text-body-secondary">Last updated 32 mins ago</small></p>
+        </div>
+    </div>`);
 
-function cards(arr){
-    for(let i = 1; i < 10; i++){
-        a = `
-            <div class="card m-3">
-                        <img src="https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/${i}.jpg" class="card-img-top"  alt="Car ${i}">
-                        <div class="card-body">
-                            <h5 class="card-title">Car ${i}</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipiscing elit donec, eleifend aenean purus dui ornare blandit risus facilisis interdum, cum nostra vulputate sem venenatis felis facilisi.</p>
-                            <p class="card-price">$2.100</p>
-                            <a class="btn btn-primary" href="product/producto.html" role="button">Ver más</a>
-                        </div>
-                    </div>`
-        arr.push(a);
-    }
-    section.innerHTML = arr.join().replaceAll(",", "");
-}
-
-cards(arr)
+section.innerHTML = cards.join().replaceAll(",", "");

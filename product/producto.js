@@ -1,26 +1,44 @@
-const main = document.querySelector('main');
+const main = document.querySelector("main");
+const elemento = window.location.search.split("=")[1];
+const carFind = autos.find((autos) => autos.id == elemento);
 
-class Product {
-    constructor(titulo, detalle, precio, stock, imagen){
-        this.titulo = titulo;
-        this.detalle = detalle;
-        this.precio = precio;
-        this.stock = stock;
-        this.imagen = imagen;
-    }
-}
+let etiquetas = `<div class="producto-container">
+    <div class="producto-main">
+        <div class="left-section">
+            <img src="${carFind.url}" alt="Zenbook Pro 14" id="main-image">
+        </div>
+        <div class="center-section">
+            <div class="product-info">
+                <h1 class="producto-h1">${carFind.model}</h1>
+                <p class="description">${carFind.description}</p>
+                <div class="rating">
+                    <span>⭐⭐⭐⭐⭐</span> <a href="#">(3)</a>
+                </div>
+                <p class="original-price">${carFind.price}</p>
+                <p class="discounted-price">$25.000 <span class="discount">(5% OFF)</span></p>
+                <p class="installments">In 6 installments of $673,799.78</p>
+            </div>
+        </div>
+        <div class="right-section">
+            <div class="shipping-info">
+                <h3>Free Standard International Shipping.</h3>
+                <p>Estimated between Tue, Oct 22 and Wed, Nov 6.</p>
+                <p class="bold">25 available</p>
+                <div class="quantity-selector">
+                    <label for="quantity" class="quantity-label">Quantity:</label>
+                    <select id="quantity" class="quantity-dropdown">
+                        <option value="1">1 unit</option>
+                        <option value="2">2 units</option>
+                        <option value="3">3 units</option>
+                        <option value="4">4 units</option>
+                        <option value="5">5 units</option>
+                        <option value="6">6 units</option>
+                    </select>
+                </div>
+            <button class="btn primary-btn">Buy it now</button>
+            <button class="btn secondary-btn">Add to cart</button>
+        </div>
+    </div>
+</div>`;
 
-const objeto = new Product("Auto", "Buenisimo", 10000, 1, "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/1.jpg");
-
-const car = `
-            <div class="card m-3">
-                        <img src="${objeto.imagen}" class="card-img-top"  alt="Car 1">
-                        <div class="card-body">
-                            <h5 class="card-title">${objeto.titulo}</h5>
-                            <p class="${objeto.detalle}</p>
-                            <p class="card-price">${objeto.precio}</p>
-                            <p class="card-text">Quedan disponibles ${objeto.stock}</p>
-                        </div>
-                    </div>`;
-
-main.innerHTML = car;
+main.innerHTML = etiquetas;
