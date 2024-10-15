@@ -2,7 +2,6 @@ const header = document.querySelector("header")
 
 let nav = [
     {text: "Home", href: "/index.html"},
-    {text: "Products", href: "#product"},
     {text: "Contact", href: "#contact"},
 ];
 

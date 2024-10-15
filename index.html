@@ -10,7 +10,21 @@
     <body>
       <header></header>
       <h1 class="pt-5 text-center"></h1>
-      <section class="container pt-5 d-flex flex-wrap justify-content-center"></section>
+      <section id="filtration" class="container d-flex justify-content-between">
+        <div>
+          <ul class="list-group list-group-horizontal">
+            <li class="list-group-item" id="all">All</li>
+            <li class="list-group-item" id="modern">Modern</li>
+            <li class="list-group-item"id="vintage">Vintage</li>
+          </ul>
+        </div>
+        <div class="div-search">
+          <input type="text" id="searcher" />
+          <button id="filterButton" class="btn btn-light btn-outline-dark">Search</button>
+          <button id="resetButton" class="btn btn-light btn-outline-dark">X</button>
+        </div>
+      </section>
+      <section id = "main" class="container pt-5 d-flex flex-wrap justify-content-evenly"></section>
       
       <script src="index.js" async></script>
       <script src="navbar.js"></script>
