@@ -2,10 +2,32 @@ main{
     margin-top: 4rem;
 }
 
-.card{
-    width: 18rem
+.container{
+    height: 30rem;
+    width: 60rem;
 }
 
-.card-img-top{
-    height: 45%
+.product-main{
+    height: 28rem;
+    width: 60rem;
+}
+
+.left-section{
+    width: 45%;
+}
+
+.right-section{
+    width: 50%;
+    height: 100%;
+}
+
+img{
+    height: 16rem;
+    width: 96%;
+    border-radius: 1%;
+}
+
+
+#rating{
+    color: #e8d64e;
 }
