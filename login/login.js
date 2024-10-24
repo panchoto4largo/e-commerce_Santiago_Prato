@@ -16,6 +16,6 @@ form.addEventListener("submit", (event) => {
         localStorage.setItem("password", pwd)
         window.location.href = "../index.html"
     } else {
-        message.innerText = "Usuario no existente"
+        message.innerText = "Email or/and password are incorrect"
     }
 })

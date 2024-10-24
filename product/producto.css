@@ -1,5 +1,6 @@
 main{
     margin-top: 4rem;
+    margin-bottom: 5rem;
 }
 
 .container{
@@ -27,7 +28,10 @@ img{
     border-radius: 1%;
 }
 
-
 #rating{
     color: #e8d64e;
+}
+
+.unlogged-button{
+    width: 100%;
 }
