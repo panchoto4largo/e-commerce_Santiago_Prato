@@ -28,7 +28,16 @@ let etiquetas =
             <div class="bottom-section d-flex flex-column justify-content-end flex-grow-1">                
                 <p class="bold align-self-start">25 available</p>
                 ${localStorage.getItem("email") ?
-                    `<div class="d-flex justify-content-between w-100">
+                    `
+                    <div class=""><div class="input-group mb-3">
+                        <select class="form-select" id="inputGroupSelect01">
+                            <option selected>Choose...</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+                    <div class="d-flex justify-content-between w-100">
                         <button class="btn btn-outline-dark flex-grow-1 me-2">Buy it now</button>
                         <button class="btn btn-outline-dark flex-grow-1">Add to cart</button>
                     </div>`

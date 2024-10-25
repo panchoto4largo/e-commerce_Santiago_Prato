@@ -35,8 +35,10 @@ resetButton.addEventListener("click", () => {
 
 function cards(autos){
     const card = autos.map((auto) =>
-        `<div class="card d-flex mb-3 border flex-column"> 
-            <img src="${auto.url}" class="card-img-top" alt="${auto.model}">
+        `<div class="card d-flex mb-3 border flex-column">
+            <div class="img-container">
+                <img src="${auto.url}" class="card-img-top" alt="${auto.model}">
+            </div>
             <div class="card-body">
                 <h5 class="card-title">${auto.model}</h5>
                 <p class="card-text">${auto.description}</p>
