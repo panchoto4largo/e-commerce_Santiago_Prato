@@ -1,3 +1,13 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+section#main {
+    flex: 1;
+}
+
 #home{
     margin-top: 4rem;
 }
@@ -16,6 +26,10 @@ input{
     background-color: #fff;
     border: none;
     outline: none;
+}
+
+.list-group{
+    cursor: pointer;
 }
 
 .card{

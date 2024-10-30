@@ -14,6 +14,8 @@ form.addEventListener("submit", (event) => {
     if (sessionAccount.email === email && sessionAccount.password === pwd) {
         localStorage.setItem("email", email)
         localStorage.setItem("password", pwd)
+        localStorage.setItem("cart", JSON.stringify([]))
+        localStorage.setItem("quantity", "0")
         window.location.href = "../index.html"
     } else {
         message.innerText = "Email or/and password are incorrect"

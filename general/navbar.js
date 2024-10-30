@@ -25,7 +25,7 @@ let navCode =
                 </div>
                 <div class="navbar-nav ms-auto me-3">
                     ${localStorage.getItem("email") ? 
-                        `<span class="me-1">${localStorage.getItem("email")} </span> | <span onclick="logout()" class="ms-1" > Log out</span>` 
+                        `<span class="me-1">${localStorage.getItem("email")} </span> | <a href="/cart/cart.html" class="text-decoration-none text-black"><i class="bi bi-cart mx-2"><span id="quantity"class="ms-1">${localStorage.getItem("quantity")}<span/></i></a> | <span onclick="logout()" class="ms-1 style="cursor: pointer" > Log out</span>` 
                         : `<a href="login/login.html" class="text-decoration-none text-black">Login</a>`
                     }
                 </div>

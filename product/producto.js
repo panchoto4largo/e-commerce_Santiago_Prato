@@ -4,6 +4,7 @@ const carFind = autos.find((autos) => autos.id == elemento);
 
 let discount =  Math.round(parseInt(carFind.price)*0.05);
 
+
 let etiquetas = 
 `   
 <a class="back btn btn-primary btn-dark rounded-pill my-3 aling-self-start d-block" href="/index.html" role="button">← RETURN</a>
@@ -26,20 +27,17 @@ let etiquetas =
                 <p class="installments">In 6 installments of $673,799.78</p>
             </div>
             <div class="bottom-section d-flex flex-column justify-content-end flex-grow-1">                
-                <p class="bold align-self-start">25 available</p>
+                <p class="bold align-self-start">${carFind.stock} available</p>
                 ${localStorage.getItem("email") ?
                     `
-                    <div class=""><div class="input-group mb-3">
-                        <select class="form-select" id="inputGroupSelect01">
-                            <option selected>Choose...</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
+                    <div class="mb-3 input-group">
+                        <button class="btn" onclick="increase()">+</button>
+                        <input type="text" id="numberInput" class="form-control text-center bg-light" value="1" aria-label="Recipient's username with two button addons" disabled>
+                        <button class="btn" onclick="decrease()">-</button>
                     </div>
                     <div class="d-flex justify-content-between w-100">
                         <button class="btn btn-outline-dark flex-grow-1 me-2">Buy it now</button>
-                        <button class="btn btn-outline-dark flex-grow-1">Add to cart</button>
+                        <button class="btn btn-outline-dark flex-grow-1" onclick="addToCart()">Add to cart</button>
                     </div>`
                     :`<div class="d-flex justify-content-center w-100">
                             <a href="/login/login.html" class="btn btn-outline-dark unlogged-button">Login to buy</a>
@@ -51,3 +49,44 @@ let etiquetas =
 </div>`;
 
 main.innerHTML = etiquetas;
+
+const counter = document.querySelector("#numberInput");
+
+function increase() {
+    const currentValue = parseInt(counter.value);
+    if (currentValue < carFind.stock) {
+        counter.value = currentValue + 1;
+    }
+}
+
+function decrease() {
+    const currentValue = parseInt(counter.value);
+    if (currentValue > 1) {
+        counter.value = currentValue - 1;
+    }
+}
+
+function addToCart(){
+    let cart = JSON.parse(localStorage.getItem("cart")) || []
+    const product = carFind
+    const existInCard = cart.some(item => item.product.id === product.id)
+
+    if(existInCard){
+        cart = cart.map(item =>{
+            if(item.product.id === product.id){
+                return{... item, quantity: item.quantity + Number(counter.value)}
+            }else{
+                return item
+            }
+        })
+    }else{
+        cart.push({product: product, quantity: Number(counter.value)})
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart))
+    let quantity = cart.reduce((acummulation, actual) => acummulation + actual.quantity, 0)
+    localStorage.setItem("quantity", quantity)
+    const quantityId = document.getElementById("quantity")
+    quantityId.innerText = quantity
+    counter.value = "1"
+}

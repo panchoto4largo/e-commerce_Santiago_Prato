@@ -1,6 +1,6 @@
 const h1 = document.querySelector('h1');
 const section = document.querySelector('#main');
-h1.innerText = 'Productos';
+h1.innerText = 'Cars';
 
 const allButton = document.querySelector("#all");
 const modernButton = document.querySelector("#modern");
@@ -21,15 +21,18 @@ modernButton.addEventListener("click", () => {filterProducts("Modern")});
 vintageButton.addEventListener("click", () =>{filterProducts("Vintage")});
 
 const searcher = () => {
-  const filtered = autos.filter(auto => auto.model.toLowerCase() === input.value.toLowerCase())
-  cards(filtered)
+    if(input.value === ""){
+        cards(autos)
+    }else{
+        const filtered = autos.filter(auto => auto.model.toLowerCase() === input.value.toLowerCase())
+        cards(filtered)
+    }
 }
 
-const resetInput = () => (input.value = "");
 
 filterButton.addEventListener("click", searcher);
 resetButton.addEventListener("click", () => {
-    resetInput
+    input.value = ""
     cards(autos)
 });
 
