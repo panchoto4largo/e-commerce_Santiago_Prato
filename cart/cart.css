@@ -11,9 +11,13 @@ section {
     margin-top: 5rem;
 }
 
-.cartProducts{
-    width: 60%;
-    background-color: aqua;
+#cardDiv{
+    width: 100%;
+}
+
+img{
+    height: 170px;
+    width: 320px;
 }
 
 .cartPrice{

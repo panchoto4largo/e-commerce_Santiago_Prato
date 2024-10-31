@@ -38,7 +38,8 @@ resetButton.addEventListener("click", () => {
 
 function cards(autos){
     const card = autos.map((auto) =>
-        `<div class="card d-flex mb-3 border flex-column">
+        `
+        <div class="card d-flex mb-3 border flex-column">
             <div class="img-container">
                 <img src="${auto.url}" class="card-img-top" alt="${auto.model}">
             </div>
@@ -49,7 +50,10 @@ function cards(autos){
             <div class="p-3">
                 <a class="btn btn-primary btn-light btn-outline-dark" href="product/producto.html?prod=${auto.id}" role="button">See more</a>
             </div>
-        </div>`);
+        </div>
+        `)
+
+
 
     section.innerHTML = card.join().replaceAll(",", "");
 }
