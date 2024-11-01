@@ -31,9 +31,9 @@ let etiquetas =
                 ${localStorage.getItem("email") ?
                     `
                     <div class="mb-3 input-group">
-                        <button class="btn" onclick="increase()">+</button>
-                        <input type="text" id="numberInput" class="form-control text-center bg-light" value="1" aria-label="Recipient's username with two button addons" disabled>
                         <button class="btn" onclick="decrease()">-</button>
+                        <input type="text" id="numberInput" class="form-control text-center bg-light" value="1" aria-label="Recipient's username with two button addons" disabled>
+                        <button class="btn" onclick="increase()">+</button>
                     </div>
                     <div class="d-flex justify-content-between w-100">
                         <button class="btn btn-outline-dark flex-grow-1 me-2">Buy it now</button>

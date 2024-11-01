@@ -14,7 +14,7 @@
         <section class="d-flex">
             <div class="cartProducts container flex-grow-1"></div>                
             <div class="col-xl-4 mt-5 mt-lg-0 me-2">
-                <div class="card border shadow-none">
+                <div class="card border shadow-none mb-2">
                     <div class="card-header bg-transparent border-bottom py-3 px-4">
                         <h5 class="font-size-16 mb-0">Purchase order</h5>
                     </div>
@@ -29,12 +29,15 @@
                         </table>
                     </div>
                 </div>
-            </div>            
+                <div class="d-flex">
+                    <button class="btn btn-outline-dark" onclick="clearCart()">Clear cart</button>
+                </div>
+            </div>           
         </section>
         <footer id="contact" ></footer>
 
         <script src="cart.js"></script>
-        <script src="/general/navbar.js"></script>
+        <script src="/general/navbar.js" defer></script>
         <script src="/general/footer.js"></script>
         <script src="/general/cars.js"></script>
     </body>
