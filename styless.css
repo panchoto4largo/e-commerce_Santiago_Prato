@@ -8,12 +8,20 @@ body {
     flex: 1;
 }
 
-#home{
-    margin-top: 4rem;
-}
 
 #main, #filtration{
     width: 60rem;
+}
+
+#div-category{
+    width: 18rem;
+}
+
+#div-category ul {
+    border-bottom: 2px solid #000;
+    padding-bottom: 10px;
+    width: 100%;
+    max-width: 600px;
 }
 
 input{

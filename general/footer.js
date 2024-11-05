@@ -11,7 +11,7 @@ let footerContent =
         <div class="col-12 col-md-6 col-lg-3 d-flex flex-column mb-4">
             <h5>Links</h5>
             <a href="/index.html" class="text-black text-decoration-none">Home</a>
-            ${localStorage.getItem("email") ? `<p class="d-none"></p>` : `<a href="/login/login.html" class="text-decoration-none text-black">Login</a>`}
+            ${localStorage.getItem("email") ? `<p class="d-none"></p>` : `<a href="/login/login.php" class="text-decoration-none text-black">Login</a>`}
         </div>
         <div class="col-12 col-md-6 col-lg-3 d-flex flex-column mb-4">
             <h5>Contacts</h5>
