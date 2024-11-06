@@ -67,26 +67,51 @@ function decrease() {
 }
 
 function addToCart(){
-    let cart = JSON.parse(localStorage.getItem("cart")) || []
-    const product = carFind
-    const existInCard = cart.some(item => item.product.id === product.id)
-
-    if(existInCard){
-        cart = cart.map(item =>{
-            if(item.product.id === product.id){
-                return{... item, quantity: item.quantity + Number(counter.value)}
-            }else{
-                return item
+    function add(){
+        let cart = JSON.parse(localStorage.getItem("cart")) || []
+        const product = carFind
+        const existInCard = cart.some(item => item.product.id === product.id)
+    
+        if(existInCard){
+            cart = cart.map(item =>{
+                if(item.product.id === product.id){
+                    return{... item, quantity: item.quantity + Number(counter.value)}
+                }else{
+                    return item
+                }
+            })
+        }else{
+            cart.push({product: product, quantity: Number(counter.value)})
+        }
+        Toastify({
+            text: "Product added",
+            duration: 750,
+            position: "top-start",
+            style: {
+                background: "#fff",  
+                color: "#000",    
             }
-        })
-    }else{
-        cart.push({product: product, quantity: Number(counter.value)})
+        }).showToast();
+            
+        localStorage.setItem("cart", JSON.stringify(cart))
+        let quantity = cart.reduce((acummulation, actual) => acummulation + actual.quantity, 0)
+        localStorage.setItem("quantity", quantity)
+        const quantityId = document.getElementById("quantity")
+        quantityId.innerText = quantity
+        counter.value = "1"
     }
 
-    localStorage.setItem("cart", JSON.stringify(cart))
-    let quantity = cart.reduce((acummulation, actual) => acummulation + actual.quantity, 0)
-    localStorage.setItem("quantity", quantity)
-    const quantityId = document.getElementById("quantity")
-    quantityId.innerText = quantity
-    counter.value = "1"
+    Swal.fire({
+        title: "Are you sure?",
+        text: "To add this product in the cart",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonColor: "#8A2BE2",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, add to cart"
+      }).then((result) => {
+        if (result.isConfirmed) {
+            add()
+        }
+      });
 }

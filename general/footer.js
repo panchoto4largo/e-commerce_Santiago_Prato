@@ -3,7 +3,7 @@ const footer = document.querySelector("footer")
 
 let footerContent = 
 `
-<div class="container-fluid text-center text-md-left bg-body-secondary mt-5">
+<div class="container-fluid text-center text-md-left mt-5" style="background: #E4E4E4;">
     <div class="row p-5 text-black">
         <div class="col-12 col-md-6 col-lg-3 mb-4">
             <h3>E-COMMERCE</h3>

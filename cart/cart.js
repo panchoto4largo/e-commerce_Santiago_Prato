@@ -62,15 +62,45 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     window.clearCart = () => {
-        console.log("Clearing cart...");
-        cart = [];
-        localStorage.setItem("cart", JSON.stringify(cart));
-        localStorage.setItem("quantity", 0);
-        navCart.innerText = "0";
-        cartCards(cart);
+        if(cart.length === 0){
+            Swal.fire({
+                icon: "info",
+                title: "Oops...",
+                text: "You don´t have any porduct",
+              });
+        }else{
+            function clearAll() {
+                console.log("Clearing cart...");
+                cart = [];
+                localStorage.setItem("cart", JSON.stringify(cart));
+                localStorage.setItem("quantity", 0);
+                navCart.innerText = "0";
+                cartCards(cart);
+                total(cart);
+            }
+       
+            Swal.fire({
+                title: "Are you sure?",
+                text: "To delete all products",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your cart has been cleared.",
+                        icon: "success"
+                    });
+                    clearAll();
+                }
+            });
+        };
+       
+    
         total(cart);
-    }
-
-    total(cart);
-    cartCards(cart);
+        cartCards(cart);
+        }
 });
