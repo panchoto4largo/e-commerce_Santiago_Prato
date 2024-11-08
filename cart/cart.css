@@ -20,6 +20,10 @@ img{
     width: 320px;
 }
 
+#eliminate{
+    cursor: pointer;
+}
+
 .cartPrice{
     width: 550px;
 }

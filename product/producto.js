@@ -31,9 +31,9 @@ let etiquetas =
                 ${localStorage.getItem("email") ?
                     `
                     <div class="mb-3 input-group">
-                        <button class="btn" onclick="decrease()">-</button>
-                        <input type="text" id="numberInput" class="form-control text-center bg-light" value="1" aria-label="Recipient's username with two button addons" disabled>
-                        <button class="btn" onclick="increase()">+</button>
+                        <button class="btn" id="decreaseButton">-</button>
+                        <input type="number" id="numberInput" class="form-control text-center bg-light" value="1" min="1" readonly>
+                        <button class="btn" id="increaseButton">+</button>
                     </div>
                     <div class="d-flex justify-content-between w-100">
                         <button class="btn btn-outline-dark flex-grow-1 me-2">Buy it now</button>
@@ -49,6 +49,8 @@ let etiquetas =
 </div>`;
 
 main.innerHTML = etiquetas;
+const decreaseButton = document.querySelector("#decreaseButton");
+const increaseButton = document.querySelector("#increaseButton");
 
 const counter = document.querySelector("#numberInput");
 
@@ -65,6 +67,23 @@ function decrease() {
         counter.value = currentValue - 1;
     }
 }
+
+decreaseButton.addEventListener('click', decrease);
+increaseButton.addEventListener('click', increase);
+
+counter.addEventListener('input', function () {
+    let currentValue = parseInt(counter.value);
+    if (isNaN(currentValue) || currentValue < 1) {
+        counter.value = 1;
+    } else if (currentValue > carFind.stock) {
+        counter.value = carFind.stock;
+    }
+});
+counter.addEventListener("keydown", function (e) {
+    if (e.key === "-" || e.key === "e") {
+        e.preventDefault();
+    }
+});
 
 function addToCart(){
     function add(){
@@ -86,10 +105,12 @@ function addToCart(){
         Toastify({
             text: "Product added",
             duration: 750,
-            position: "top-start",
             style: {
                 background: "#fff",  
                 color: "#000",    
+            },
+            offset: {
+                y: 45
             }
         }).showToast();
             

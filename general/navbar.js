@@ -16,7 +16,7 @@ let navCode =
     `
     <nav class="navbar navbar-expand-lg d-block fixed-top" style="background: #E4E4E4;">
         <div class="container-fluid d-flex">
-            <a class="navbar-brand" href="#">E-COMMERCE</a>
+            <a class="navbar-brand decoration-none">E-COMMERCE</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -26,7 +26,7 @@ let navCode =
             </div>
             <div class="navbar-nav ms-auto me-3">
                 ${localStorage.getItem("email") ? 
-                    `<div><span class="me-1">${localStorage.getItem("email")} </span> | <a href="/cart/cart.html" class="text-decoration-none text-black"><i class="bi bi-cart mx-2"><span id="quantity" class="ms-1">${localStorage.getItem("quantity")}<span/></i></a> | <span onclick="logout()" class="ms-1 style="cursor: pointer" > Log out</span></div>` 
+                    `<div><span class="me-1">${localStorage.getItem("email")} </span> | <a href="/cart/cart.html" class="text-decoration-none text-black"><i class="bi bi-cart mx-2"><span id="quantity" class="ms-1">${localStorage.getItem("quantity")}<span/></i></a> | <span onclick="logout()" class="ms-1" > Log out</span></div>` 
                     : `<a href="./login/login.html" class="text-decoration-none text-black">Login</a>`
                 }
             </div>

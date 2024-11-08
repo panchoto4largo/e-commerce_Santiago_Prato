@@ -1,15 +1,14 @@
 const h1 = document.querySelector('h1');
 const section = document.querySelector('#main');
-h1.innerText = 'Cars';
-
 const allButton = document.querySelector("#all");
 const modernButton = document.querySelector("#modern");
 const vintageButton = document.querySelector("#vintage");
-
 const resetButton = document.querySelector("#resetButton");
 const filterButton = document.querySelector("#filterButton");
 const input = document.querySelector("input");
+const error = document.querySelector(".errorMessage");
 
+h1.innerText = 'Cars';
 
 const filterProducts = (category) => {
     const productsToShow = autos.filter(auto => auto.category === category)
@@ -25,14 +24,18 @@ const searcher = () => {
         cards(autos)
     }else{
         const filtered = autos.filter(auto => auto.model.toLowerCase() === input.value.toLowerCase())
-        cards(filtered)
+        if(filtered.length < 1){
+            error.innerHTML = `<p class="text-center fs-2 mt-3">Car not found. Please try a different search</p>`
+        }else{
+            cards(filtered)
+        }
     }
 }
-
 
 filterButton.addEventListener("click", searcher);
 resetButton.addEventListener("click", () => {
     input.value = ""
+    error.innerHTML = ""
     cards(autos)
 });
 

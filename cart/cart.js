@@ -1,11 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const div = document.querySelector(".cartProducts");
+    const list = document.querySelector(".cartProducts");
     const price = document.querySelector(".finalPrice");
     const navCart = document.querySelector("#quantity");
+    const buttons = document.querySelector("#button-div");
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
     const cartCards = (cart) => {
-        const cartCard = cart.map((x) => `
+        if (cart.length < 1) {
+            list.innerHTML = `<p class="text-center fs-4 fw-bold">Cart is empty</p>`;
+            buttons.innerHTML =`<a class="btn btn btn-success" href="/index.html">Keep buying</a>`
+            return;
+        }
+        const cartCard = cart.map((x) =>`
             <div class="card row mb-3 ms-1 me-2">
                 <div id="cardDiv" class="col-xl-8">
                     <div>
@@ -15,9 +21,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                     <img src="${x.product.url}" class="avatar-lg rounded" />
                                 </div>
                                 <div class="flex-grow-1 overflow-hidden">
-                                    <h5 class="text-truncate font-size-18">${x.product.model}</h5>
+                                    <h5 class="text-truncate fs-3">${x.product.model}</h5>
                                 </div>
-                                <p onclick="removeCart(${x.product.id})">Eliminate</p>
+                                <p id="eliminate" onclick="removeCart(${x.product.id})" class="text-danger">Eliminate</p>
                             </div>
                             <div class="row mt-3">
                                 <div class="col-md-4">
@@ -38,7 +44,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             </div>
         `);
-        div.innerHTML = cartCard.join('');
+        list.innerHTML = cartCard.join('');
+        buttons.innerHTML = `
+        <a class="btn btn-success me-2" href="">Checkout</a>
+        <button class="btn btn-danger" onclick="clearCart()">Clear cart</button>
+        `
     };
 
     function total(cart) {
@@ -62,45 +72,32 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     window.clearCart = () => {
-        if(cart.length === 0){
-            Swal.fire({
-                icon: "info",
-                title: "Oops...",
-                text: "You don´t have any porduct",
-              });
-        }else{
-            function clearAll() {
-                console.log("Clearing cart...");
-                cart = [];
-                localStorage.setItem("cart", JSON.stringify(cart));
-                localStorage.setItem("quantity", 0);
-                navCart.innerText = "0";
-                cartCards(cart);
-                total(cart);
-            }
-       
-            Swal.fire({
-                title: "Are you sure?",
-                text: "To delete all products",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, delete it!"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire({
-                        title: "Deleted!",
-                        text: "Your cart has been cleared.",
-                        icon: "success"
-                    });
-                    clearAll();
-                }
-            });
-        };
-       
-    
-        total(cart);
-        cartCards(cart);
+        function clearAll() {
+            console.log("Clearing cart...");
+            cart = [];
+            localStorage.setItem("cart", JSON.stringify(cart));
+            localStorage.setItem("quantity", 0);
+            navCart.innerText = "0";
+            cartCards(cart);
+            total(cart);
         }
-});
+    
+        Swal.fire({
+            title: "Are you sure?",
+            text: "To delete all products",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                clearAll();
+            }
+        });
+    };
+    
+    total(cart);
+    cartCards(cart);
+    }
+);
