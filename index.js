@@ -23,7 +23,7 @@ const searcher = () => {
     if(input.value === ""){
         cards(autos)
     }else{
-        const filtered = autos.filter(auto => auto.model.toLowerCase() === input.value.toLowerCase())
+        const filtered = autos.filter(auto => auto.model.toLowerCase().includes(input.value.toLowerCase()))
         if(filtered.length < 1){
             error.innerHTML = `<p class="text-center fs-2 mt-3">Car not found. Please try a different search</p>`
         }else{
@@ -31,6 +31,7 @@ const searcher = () => {
         }
     }
 }
+
 
 filterButton.addEventListener("click", searcher);
 resetButton.addEventListener("click", () => {
@@ -61,4 +62,10 @@ function cards(autos){
     section.innerHTML = card.join().replaceAll(",", "");
 }
 
-cards(autos)
+const promise = new Promise((resolve, project)=>{
+    setTimeout(() => {
+        resolve("y")
+    },1250)
+})
+
+promise.then(() => cards(autos))  
